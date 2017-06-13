@@ -1,0 +1,22 @@
+
+{% block body %}
+
+        {% for book in books %}
+            <tr>
+                <td><a href="{{ path('book_show', { 'name': book.name }) }}">{{ book.name }}</a></td>          
+                <td>{% if book.releaseDate %}{{ book.releaseDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ book.length }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for item in book.genres %}
+                        <li>
+                            <a href="{{ path('genre_show', { 'name': item.name }) }}">{{ item.name }}</a>
+                        </li>   
+                         {% endfor %}  
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+{% endblock %}
+   
